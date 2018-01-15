@@ -1,0 +1,51 @@
+%YAML 1.1
+---
+$schema: "http://stsci.edu/schemas/yaml-schema/draft-01"
+id: "http://stsci.edu/schemas/asdf/wcs/temporal_frame-1.2.0"
+tag: "tag:stsci.edu:asdf/wcs/temporal_frame-1.2.0"
+
+title: >
+  Represents a temporal frame.
+
+type: object
+properties:
+  name:
+    description: |
+      A user-friendly name for the frame.
+    type: string
+
+  axes_order:
+    description: |
+      The order of the axes.
+    type: array
+    items:
+      type: integer
+
+  axes_names:
+    description: |
+      The name of each axis in this frame.
+    type: array
+    items:
+      anyOf:
+        - type: string
+        - type: 'null'
+
+  reference_frame:
+    description: |
+      The reference frame.
+    type: object
+
+  unit:
+    description: |
+      Units for each axis.
+    type: array
+    items:
+      $ref: ../unit/unit-1.0.0
+
+  reference_time:
+    description: |
+      The reference time.
+    $ref: ../time/time-1.1.0
+
+required: [name]
+additionalProperties: false
